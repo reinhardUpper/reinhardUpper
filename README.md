@@ -4,5 +4,3 @@
 </h1>
 
 <h3 align="center"> C# beginner, structural engineer (RC) </h3>
-
-![snake gif](https://github.com/reinhardUpper/reinhardUpper/blob/output/github-contribution-grid-snake.gif)
