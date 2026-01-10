@@ -1,7 +1,7 @@
 name: Generate Snake (Test)
 
 on:
-  workflow_dispatch: # можно запускать вручную
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -10,11 +10,16 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
-      # 1. Клонируем текущий репозиторий
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      # 2. Создаём фиктивные коммиты, чтобы Snake точно сгенерировалась
+      # Настраиваем Git пользователя для фиктивных коммитов
+      - name: Set Git user
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+
+      # Создаём фиктивные коммиты
       - name: Create dummy commits
         run: |
           mkdir -p dummy
@@ -24,7 +29,6 @@ jobs:
             git commit -m "Dummy commit $i"
           done
 
-      # 3. Генерируем Snake
       - name: Generate snake
         uses: Platane/snk@v3
         with:
@@ -33,11 +37,9 @@ jobs:
             dist/github-contribution-grid-snake.svg
             dist/github-contribution-grid-snake-dark.svg
 
-      # 4. Проверяем, что файлы создались
       - name: List dist
         run: ls -la dist
 
-      # 5. Пушим на ветку output
       - name: Push to output branch
         uses: crazy-max/ghaction-github-pages@v4
         with:
