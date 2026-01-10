@@ -1,5 +1,5 @@
 <h1 align="center">
-  Hi there, I'm Alexandr
+  Hi there, I'm Alexander
   <img src="https://github.com/reinhardUpper/reinhardUpper/raw/master/catSticker.gif" height="70"/>
 </h1>
 
